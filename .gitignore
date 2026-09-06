@@ -1,0 +1,31 @@
+# Скомпилированные файлы
+*.exe
+*.out
+*.o
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+
+# Папки VS Code
+.vscode/
+*.code-workspace
+
+# Временные файлы
+*.tmp
+temp.exe
+a.out
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Папки сборки
+build/
+bin/
+obj/
+Debug/
+Release/
