@@ -96,6 +96,18 @@ public:
     bool operator!=(const Rational& other) const {
         return num != other.num or den != other.den;
     }
+        bool operator<(const Rational& other) const {
+        return num * other.den < other.num * den;
+    }
+    bool operator>(const Rational& other) const {
+        return num * other.den > other.num * den;
+    }
+        bool operator<=(const Rational& other) const {
+        return (*this < other) or (*this == other);
+    }
+    bool operator>=(const Rational& other) const {
+        return (*this > other) or (*this == other);
+    }
 
     // сложение дробей
     Rational operator+(const Rational& other) const {
@@ -117,17 +129,53 @@ public:
             throw std::runtime_error("Деление на ноль!");
         return Rational(num * other.den, den * other.num);
     }
+
+    // быстрые операции
+    Rational& operator+=(const Rational& other) {
+        *this = *this + other;
+        return *this;
+    }
+    Rational& operator-=(const Rational& other) {
+        *this = *this - other;
+        return *this;
+    }
+    Rational& operator*=(const Rational& other) {
+        *this = *this * other;
+        return *this;
+    }
+    Rational& operator/=(const Rational& other) {
+        *this = *this / other;
+        return *this;
+    }
+
+    //инкрименты
+    Rational& operator++() {
+        *this = *this + Rational(1);
+        return *this;
+    }
+    Rational operator++(int) {
+        Rational temp = *this;
+        ++(*this);
+        return temp; 
+    }
+
+    // ()
+    double operator()() const {
+    return static_cast<double>(num) / den;
+    }
 };
 
 int main() {
-    SetConsoleOutputCP(65001);  // вывод в UTF-8
-    SetConsoleCP(65001);        // ввод в UTF-8
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
+
+    std::cout << "=== БАЗОВЫЙ УРОВЕНЬ ===\n\n";
 
     // Конструкторы
     Rational a(3, 4);
     Rational b(2, 3);
-    Rational c;            // по умолчанию 0/1
-    Rational d(a);         // копия a
+    Rational c;
+    Rational d(a);
 
     std::cout << "a = " << a << "\n";
     std::cout << "b = " << b << "\n";
@@ -146,10 +194,50 @@ int main() {
     std::cout << "6/8 сокращено до: " << e << "\n";
     std::cout << "3/(-4) нормализовано до: " << f << "\n\n";
 
-    // Сравнение
+    // Сравнение ==, !=
     Rational g(3, 4);
     std::cout << "a == g? " << (a == g ? "да" : "нет") << "\n";
     std::cout << "a != b? " << (a != b ? "да" : "нет") << "\n\n";
+
+    std::cout << "=== СРЕДНИЙ УРОВЕНЬ ===\n\n";
+
+    // Составные операторы
+    std::cout << "--- Составные операторы ---\n";
+    Rational s(1, 2);
+    std::cout << "s = " << s << "\n";
+    s += Rational(1, 3);
+    std::cout << "s += 1/3 -> " << s << "\n";
+    s -= Rational(1, 6);
+    std::cout << "s -= 1/6 -> " << s << "\n";
+    s *= Rational(2, 1);
+    std::cout << "s *= 2 -> " << s << "\n";
+    s /= Rational(3, 1);
+    std::cout << "s /= 3 -> " << s << "\n\n";
+
+    // Операторы сравнения <, >, <=, >=
+    std::cout << "--- Сравнения ---\n";
+    Rational p(1, 2);
+    Rational q(2, 3);
+    std::cout << "p = " << p << ", q = " << q << "\n";
+    std::cout << "p < q? " << (p < q ? "да" : "нет") << "\n";
+    std::cout << "p > q? " << (p > q ? "да" : "нет") << "\n";
+    std::cout << "p <= q? " << (p <= q ? "да" : "нет") << "\n";
+    std::cout << "p >= q? " << (p >= q ? "да" : "нет") << "\n\n";
+
+    // Инкремент
+    std::cout << "--- Инкремент ---\n";
+    Rational inc(1, 2);
+    std::cout << "inc = " << inc << "\n";
+    ++inc;
+    std::cout << "++inc -> " << inc << "\n";
+    inc++;
+    std::cout << "inc++ -> " << inc << "\n\n";
+
+    // Функтор
+    std::cout << "--- Функтор ---\n";
+    Rational func(3, 4);
+    std::cout << "func = " << func << "\n";
+    std::cout << "func() = " << func() << "\n\n";
 
     // Ввод с клавиатуры
     Rational h;
