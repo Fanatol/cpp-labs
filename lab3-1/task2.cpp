@@ -23,10 +23,6 @@ public:
 
     static int getCount() { return count; }
 
-    std::string getName() const { return name; }
-    int  getNumber() const { return number; }
-    std::string getRole() const { return role; }
-
     void print() const {
         std::cout << "Игрок " << name << " под номером " 
         << number << std::endl;
