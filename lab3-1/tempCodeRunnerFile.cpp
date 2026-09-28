@@ -61,8 +61,8 @@ public:
 };
 
 int main() {
-    SetConsoleOutputCP(65001);
-    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);  // вывод в UTF-8
+    SetConsoleCP(65001);        // ввод в UTF-8
 
     Player p1("Иванов", 10, "нападающий");
     Player p2("Петров", 7, "защитник");
