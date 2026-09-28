@@ -55,7 +55,7 @@ public:
         wheels.emplace_back(r, d);
     }
     void print() const {
-        std::cout << "Машина " << name << ":\n";
+        std::cout << "\nМашина " << name << ":\n";
         for (const Wheel& w : wheels){
             w.print();
         }
@@ -74,5 +74,8 @@ int main() {
     car.addWheel(Rubber::Winter, 17.0);
     car.print();
 
+    std::cout << "Нажмите Enter для выхода...";
+    std::cin.ignore();
+    std::cin.get();
     return 0;
 }
