@@ -1,5 +1,7 @@
+// 2. Сортировки
 #include <utility>
 
+// 2.1 Пузырьковая
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         bool swapped = false;
@@ -13,6 +15,7 @@ void bubbleSort(int arr[], int n) {
     }
 }
 
+// 2.2 Вставками
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];
@@ -25,6 +28,7 @@ void insertionSort(int arr[], int n) {
     }
 }
 
+// 2.3 Выбором
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;

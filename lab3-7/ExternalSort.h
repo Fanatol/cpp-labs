@@ -7,6 +7,7 @@
 
 #include "Sorts.h"
 
+// Внешняя сортировка слиянием (файлы)
 void externalMergeSort(const std::string& inputFile, const std::string& outputFile,
                        int chunkSize = 1000) {
     std::vector<std::string> tempFiles;
@@ -14,6 +15,7 @@ void externalMergeSort(const std::string& inputFile, const std::string& outputFi
     std::ifstream in;
     in.open(inputFile, std::ios::in);
 
+    // Читаем куски, сортируем, пишем во временные файлы
     if (in.is_open()) {
         while (true) {
             std::vector<int> chunk;
@@ -46,6 +48,7 @@ void externalMergeSort(const std::string& inputFile, const std::string& outputFi
         }
     }
 
+    // Открываем все временные файлы
     std::vector<std::ifstream> files;
     files.reserve(tempFiles.size());
     for (const std::string& name : tempFiles) {
@@ -63,6 +66,7 @@ void externalMergeSort(const std::string& inputFile, const std::string& outputFi
     std::ofstream out;
     out.open(outputFile, std::ios::out);
 
+    // Слияние всех временных файлов
     while (true) {
         int minIndex = 0;
         for (size_t i = 0; i < current.size(); i++) {

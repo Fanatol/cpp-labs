@@ -1,16 +1,21 @@
+// 1. Рекурсивные функции
 #include <cstdlib>
 
+// 1.1 Факториал
 int factorial(int n) {
     if (n <= 1)
         return 1;
     else
         return n * factorial(n - 1);
 }
+
+// 1.2 Числа Фибоначчи
 int fib(int n) {
     if (n <= 1) return n;
     return fib(n - 1) + fib(n - 2);
 }
 
+// 1.3 Количество цифр
 int countDigits(int n) {
     n = abs(n);
     if (n < 10)
@@ -19,6 +24,7 @@ int countDigits(int n) {
         return 1 + countDigits(n / 10);
 }
 
+// 1.4 Бинарный поиск
 int binarySearch(int arr[], int left, int right, int target) {
     if (left > right) return -1;
     int mid = (left + right) / 2;
