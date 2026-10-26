@@ -10,9 +10,7 @@
 #include "ExternalSort.h"
 #include "Sorts.h"
 
-// ============================================================
 // Замер времени
-// ============================================================
 template <typename Func>
 long long measureTime(Func func) {
     auto start = std::chrono::high_resolution_clock::now();
@@ -22,9 +20,7 @@ long long measureTime(Func func) {
     return std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
 }
 
-// ============================================================
 // Замеры производительности трёх сортировок
-// ============================================================
 void benchmark() {
     std::cout << "\n=== Сравнение производительности ===\n";
     std::cout << "N\t\tquick\t\tmerge\t\theap\n";
@@ -59,9 +55,7 @@ void benchmark() {
     }
 }
 
-// ============================================================
 // Создание тестового файла
-// ============================================================
 void createTestFile(const std::string& filename, int count) {
     std::ofstream out(filename);
     for (int i = 0; i < count; i++) {
@@ -70,9 +64,7 @@ void createTestFile(const std::string& filename, int count) {
     out.close();
 }
 
-// ============================================================
 // Чтение файла и вывод
-// ============================================================
 void readAndPrintFile(const std::string& filename) {
     std::ifstream in(filename);
     int x;
@@ -87,9 +79,7 @@ void readAndPrintFile(const std::string& filename) {
     in.close();
 }
 
-// ============================================================
 // Демонстрация внешней сортировки
-// ============================================================
 void demoExternal() {
     std::cout << "\n=== Внешняя сортировка (файлы) ===\n";
 
@@ -107,9 +97,7 @@ void demoExternal() {
     std::remove("output.txt");
 }
 
-// ============================================================
 // main
-// ============================================================
 int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
